@@ -8,7 +8,7 @@ public class Produto {
 	private int qtde_max;
 	private int id_fornecedor;
 	private double porc_venda;
-	private String ean;
+	private long ean;
 	private double preco_custo;
 	
 	public Produto() {
@@ -16,7 +16,7 @@ public class Produto {
 	}
 
 	public Produto(String descricao, int qtde_estoque, int qtde_min, int qtde_max, int id_fornecedor,
-			double porc_venda, String ean, double preco_custo) {
+			double porc_venda, long ean, double preco_custo) {
 		super();
 		this.descricao = descricao;
 		this.qtde_estoque = qtde_estoque;
@@ -84,11 +84,11 @@ public class Produto {
 		this.porc_venda = porc_venda;
 	}
 
-	public String getEan() {
+	public long getEan() {
 		return ean;
 	}
 
-	public void setEan(String ean) {
+	public void setEan(long ean) {
 		this.ean = ean;
 	}
 

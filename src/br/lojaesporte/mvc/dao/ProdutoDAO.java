@@ -15,17 +15,27 @@ public class ProdutoDAO implements InterfaceCRUD<Produto>{
 	
 	@Override
 	public boolean create(Produto model) throws SQLException {
+		boolean isSucess;
+		//descricao, qtde_estoque, qtde_min, qtde_max, id_fornecedor, porc_venda, ean, preco_custo
 		try {
 			pstm = preparaSql(Sql.INSERT);
 			pstm.setString(1, model.getDescricao());
 			pstm.setInt(2, model.getQtde_estoque());
-			return true;
+			pstm.setInt(3, model.getQtde_min());
+			pstm.setInt(4, model.getQtde_max());
+			pstm.setInt(5, model.getId_fornecedor());
+			pstm.setDouble(6, model.getPorc_venda());
+			pstm.setLong(7, model.getEan());
+			pstm.setDouble(8, model.getPreco_custo());
+			isSucess = pstm.execute();
+			pstm.close();
 		}catch(Throwable e){
-			e.getMessage();
+			System.out.println(e.getMessage());
 			return false;
 		}finally {
 			this.con.desconectar();
 		}
+		return isSucess;
 	}
 
 	@Override
